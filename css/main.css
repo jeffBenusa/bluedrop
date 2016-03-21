@@ -8,8 +8,23 @@ body{
    left: 0;
 }
 
-#mapid{
+#map{
+   float: left;
    height: 100%;
    width: 100%;
+}
 
+#random_container{
+   position: absolute;
+   right: 10px;
+   top: 10px;
+   z-index: 1;
+}
+#random_container button{
+   min-width: 250px;
+   height: 100px;
+}
+
+.red{
+   background-color: red;
 }

@@ -1,15 +1,47 @@
-$(function() {
+$( document ).ready(function() {
 
-  var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+  L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+  var mymap = L.map('map').setView([51.505, -0.09], 10);
+
+  var myLayer = L.mapbox.featureLayer().addTo(mymap);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+    maxZoom: 13,
     id: 'mapbox.streets'
   }).addTo(mymap);
 
-  
+  var marker = L.marker([51.5, -0.09]).addTo(myLayer);
 
-})
+
+  // Random marker below
+  console.log("Random location close to 51.50");
+  console.log(50.2+(Math.random() * 0.5) + 1);
+  var lat = (50.2+(Math.random() * 0.5) + 1);
+
+  console.log("Random location near -0.09");
+  console.log(.02+(Math.random() * 0.05) + .01);
+  var long = (-.39+(Math.random() * .75));
+
+  var marker = L.marker([lat,long]).addTo(myLayer);
+
+  $("#random_container").click(function(){
+      console.log("Random location close to 51.50");
+      console.log(50.2+(Math.random() * 0.5) + 1);
+      var lat = (50.2+(Math.random() * 0.5) + 1);
+
+      console.log("Random location near -0.09");
+      console.log(.02+(Math.random() * 0.05) + .01);
+      var long = (-.39+(Math.random() * .75));
+
+      var marker = L.marker([lat,long]).addTo(myLayer);
+  });
+
+});
+
+
+function addNewMarker(){
+
+
+
+}
