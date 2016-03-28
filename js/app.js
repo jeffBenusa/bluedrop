@@ -26,22 +26,22 @@ $( document ).ready(function() {
   var marker = L.marker([lat,long]).addTo(myLayer);
 
   $("#random_container").click(function(){
-    addnewMarker(myLayer);
+    addnewMarker();
   });
-});
 
-function addnewMarker(OtherLayer){
-    console.log("Random location close to 51.50");
-    console.log(50.2+(Math.random() * 0.5) + 1);
-    var lat = (50.2+(Math.random() * 0.5) + 1);
 
-    console.log("Random location near -0.09");
-    console.log(.02+(Math.random() * 0.05) + .01);
-    var long = (-.39+(Math.random() * .75));
+  function addnewMarker(){
+      console.log("Random location close to 51.50");
+      console.log(50.2+(Math.random() * 0.5) + 1);
+      var lat = (50.2+(Math.random() * 0.5) + 1);
 
-    var marker = L.marker([lat,long]).addTo(OtherLayers);
+      console.log("Random location near -0.09");
+      console.log(.02+(Math.random() * 0.05) + .01);
+      var long = (-.39+(Math.random() * .75));
+
+      var marker = L.marker([lat,long]).addTo(myLayer);
 }
-
+});
 
   // var mymap = L.map('map').setView([51.505, -0.09], 10);
   // var myLayer = L.mapbox.featureLayer().addTo(mymap);
