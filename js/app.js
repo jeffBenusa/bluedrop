@@ -4,7 +4,12 @@ $( document ).ready(function() {
 
   L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
+  var southWest = L.latLng(-0.412271, 51.381054),
+      northEast = L.latLng(0.152448, 51.657928),
+      bounds = L.latLngBounds(southWest, northEast);
+
   var mymap = L.map('map').setView([51.505, -0.09], 10);
+  mymap.fitbounds = bounds;
 
   var myLayer = L.mapbox.featureLayer().addTo(mymap);
 
@@ -16,13 +21,10 @@ $( document ).ready(function() {
 
   // London center marker
   var marker = L.marker([51.5, -0.09]).addTo(myLayer);
-
-
   // Adding random marker
   $("#random_container").click(function(){
     addnewMarker();
   });
-
   function addnewMarker(){
       var lat = (50.2+(Math.random() * 0.5) + 1);
       var long = (-.39+(Math.random() * .75));
@@ -30,11 +32,13 @@ $( document ).ready(function() {
   }
 
 
-
-  $('#map').on('load', function() {
-    $(".trigger").fadeOut(1000);
-    console.log("check");
-  });
+  // These two fadeMaker & Timer work together to fade out the markers
+  var fadeMarker = function(){
+    $(".BlueZoneVisit").fadeOut(1000,function(){
+      $(this).parent().parent().remove();
+    });
+  };
+  var timer = setInterval(fadeMarker, 500);
 
 
   // attaching function on map click
@@ -52,9 +56,11 @@ $( document ).ready(function() {
             }
       }
 
+    //Creates custom marker image with CSS Class / JQUERY targetable
     var cssIcon = L.divIcon({
     // Specify a class name we can refer to in CSS.
       className: 'css-icon',
+      html:'<div><img class="BlueZoneVisit" src="marker.png"/></div>',
       // Set marker width and height
       iconSize: [100, 100]
     });
@@ -69,10 +75,15 @@ $( document ).ready(function() {
             alt: "Resource Location",
             riseOnHover: true,
             draggable: false,
-            opacity:.8,
-        }).bindPopup();
+            opacity:1,
+        });
         //marker.on("popupopen", onPopupOpen);
         return marker;
     }}).addTo(mymap);
     }
+
+    // $(".BlueZoneVisit").click(function(){
+    //
+    //     console.log("test");
+    // });
 });

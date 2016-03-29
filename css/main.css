@@ -32,52 +32,10 @@ body{
   background-color: rgba(255,255,255,0.5);
   border-radius: 50%;
   box-shadow: 0px 0px 4px white;
-  transition: all 1s
+  -webkit-transition: width 2s; /* Safari */
+  transition: width 2s;
 }
 
-.css-icon{
-  background:#AFE4FF;
-  border:5px solid rgba(255,255,255,0.5);
-  color:blue;
-  font-weight:bold;
-  text-align:center;
-  border-radius:50%;
-  line-height:30px;
-}
-
-@-webkit-keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-    16% {
-        opacity: 1;
-    }
-    84% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-    16% {
-        opacity: 1;
-    }
-    84% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-.message {
-    width: 400px;
-    margin: 0 auto;
-    opacity: 0;
-    text-align: center;
-    -webkit-animation: fadeInOut 6s;
-    animation: fadeInOut 6s;
+.animated-icon:mouseout{
+  width: 0;
 }
