@@ -4,12 +4,18 @@ $( document ).ready(function() {
 
   L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
-  var southWest = L.latLng(-0.412271, 51.381054),
-      northEast = L.latLng(0.152448, 51.657928),
+  var southWest = L.latLng(40.369454, -96.853014),
+      northEast = L.latLng(43.626029, -90.151354),
       bounds = L.latLngBounds(southWest, northEast);
 
-  var mymap = L.map('map').setView([51.505, -0.09], 10);
-  mymap.fitbounds = bounds;
+
+  var mymap = L.mapbox.map('map', 'mapbox.streets', {
+    maxBounds: bounds,
+    maxZoom: 12,
+    minZoom: 8
+  });
+
+  mymap.fitBounds(bounds);
 
   var myLayer = L.mapbox.featureLayer().addTo(mymap);
 
@@ -18,8 +24,11 @@ $( document ).ready(function() {
     id: 'mapbox.streets'
   }).addTo(mymap);
 
+/*
+/**********************
+ London center marker
+ **********************
 
-  // London center marker
   var marker = L.marker([51.5, -0.09]).addTo(myLayer);
   // Adding random marker
   $("#random_container").click(function(){
@@ -30,6 +39,7 @@ $( document ).ready(function() {
       var long = (-.39+(Math.random() * .75));
       var marker = L.marker([lat,long]).addTo(myLayer);
   }
+  */
 
 
   // These two fadeMaker & Timer work together to fade out the markers
@@ -54,7 +64,7 @@ $( document ).ready(function() {
               "type": "Point",
               "coordinates": [e.latlng.lat, e.latlng.lng]
             }
-      }
+    }
 
     //Creates custom marker image with CSS Class / JQUERY targetable
     var cssIcon = L.divIcon({
@@ -77,13 +87,9 @@ $( document ).ready(function() {
             draggable: false,
             opacity:1,
         });
-        //marker.on("popupopen", onPopupOpen);
         return marker;
     }}).addTo(mymap);
     }
 
-    // $(".BlueZoneVisit").click(function(){
-    //
-    //     console.log("test");
-    // });
+
 });
