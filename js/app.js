@@ -15,6 +15,15 @@ $( document ).ready(function() {
     minZoom: 8
   });
 
+
+  // Disable interactivity
+  mymap.dragging.disable();
+  mymap.touchZoom.disable();
+  mymap.doubleClickZoom.disable();
+  mymap.scrollWheelZoom.disable();
+  mymap.keyboard.disable();
+
+
   mymap.fitBounds(bounds);
 
   var myLayer = L.mapbox.featureLayer().addTo(mymap);
@@ -23,24 +32,6 @@ $( document ).ready(function() {
     maxZoom: 13,
     id: 'mapbox.streets'
   }).addTo(mymap);
-
-/*
-/**********************
- London center marker
- **********************
-
-  var marker = L.marker([51.5, -0.09]).addTo(myLayer);
-  // Adding random marker
-  $("#random_container").click(function(){
-    addnewMarker();
-  });
-  function addnewMarker(){
-      var lat = (50.2+(Math.random() * 0.5) + 1);
-      var long = (-.39+(Math.random() * .75));
-      var marker = L.marker([lat,long]).addTo(myLayer);
-  }
-  */
-
 
   // These two fadeMaker & Timer work together to fade out the markers
   var fadeMarker = function(){
@@ -72,7 +63,7 @@ $( document ).ready(function() {
       className: 'css-icon',
       html:'<div><img class="BlueZoneVisit" src="marker.png"/></div>',
       // Set marker width and height
-      iconSize: [100, 100]
+      iconSize: [-1, -1]
     });
 
     var marker;
