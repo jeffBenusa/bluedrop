@@ -1,4 +1,4 @@
- m$( document ).ready(function() {
+$( document ).ready(function() {
 
   var mouseLocation = [];
 
@@ -61,7 +61,7 @@
     var cssIcon = L.divIcon({
     // Specify a class name we can refer to in CSS.
       className: 'css-icon',
-      html:'<div><img class="BlueZoneVisit" src="img/smarker.png"/></div>',
+      html:'<div><img class="BlueZoneVisit" src="img/marker.png"/></div>',
       // Set marker width and height
       iconSize: [-1, -1]
     });
