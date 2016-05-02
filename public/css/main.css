@@ -39,3 +39,13 @@ body{
 .animated-icon:mouseout{
   width: 0;
 }
+
+#button{
+  z-index: 10;
+  background-color: gray;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  right: 20px;
+  top: 20px;
+}

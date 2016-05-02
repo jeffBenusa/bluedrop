@@ -11,8 +11,8 @@ $( document ).ready(function() {
 
   var mymap = L.mapbox.map('map', 'mapbox.streets', {
     maxBounds: bounds,
-    maxZoom: 12,
-    minZoom: 8
+    maxZoom: 9,
+    minZoom: 7
   });
 
 
@@ -47,6 +47,8 @@ $( document ).ready(function() {
 
   // Script for adding marker on map click
   function onMapClick(e) {
+    communityClickedLatLng = [e.latlng.lat, e.latlng.lng];
+    socket.emit('CommunityClicked', communityClickedLatLng)
 
     var geojsonFeature = {
       "type": "Feature",
@@ -66,29 +68,73 @@ $( document ).ready(function() {
       iconSize: [-1, -1]
     });
 
+
     var marker;
 
     L.geoJson(geojsonFeature, {
-    pointToLayer: function(feature, latlng){
-        marker = L.marker(e.latlng, {
-            icon: cssIcon,
-            title: "Resource Location",
-            alt: "Resource Location",
-            riseOnHover: true,
-            draggable: false,
-            opacity:1,
+      pointToLayer: function(feature, latlng){
+        marker = L.marker(communityClickedLatLng, {
+          icon: cssIcon,
+          title: "Resource Location",
+          alt: "Resource Location",
+          riseOnHover: true,
+          draggable: false,
+          opacity:1,
         });
         return marker;
-    }}).addTo(mymap);
+      }
+    }).addTo(mymap);
+  }
+
+  var communityClicked= [];
+
+  var socket = io.connect('http://localhost:3000/');
+
+  $("#button").click(function(){
+    socket.emit('message','I have been clicked');
+    console.log("client clicked");
+  });
+
+
+
+  socket.on('displayMarker', function(markerLatLng){
+    console.log(markerLatLng);
+
+    var geojsonFeature = {
+      "type": "Feature",
+          "properties": {},
+          "geometry": {
+              "type": "Point",
+              "coordinates": markerLatLng
+            }
     }
 
-
-    var socket = io.connect('http://localhost:3000/');
-
-    socket.on('connect', function(data) {
-        socket.emit('join', 'Hello World from client');
+    //Creates custom marker image with CSS Class / JQUERY targetable
+    var cssIcon = L.divIcon({
+    // Specify a class name we can refer to in CSS.
+      className: 'css-icon',
+      html:'<div><img class="BlueZoneVisit" src="img/marker.png"/></div>',
+      // Set marker width and height
+      iconSize: [-1, -1]
     });
 
 
+    var marker;
+
+    L.geoJson(geojsonFeature, {
+      pointToLayer: function(feature, latlng){
+        marker = L.marker(markerLatLng, {
+          icon: cssIcon,
+          title: "Resource Location",
+          alt: "Resource Location",
+          riseOnHover: true,
+          draggable: false,
+          opacity:1,
+        });
+        return marker;
+      }
+    }).addTo(mymap);
+
+  });
 
 });

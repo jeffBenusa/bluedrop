@@ -1,0 +1,27 @@
+{
+  "name": "Bluedrop",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jeffBenusa/bluedrop",
+  "authors": [
+    "Jeff Benusa <jeff.benusa@gmail.com>"
+  ],
+  "description": "Bluezones traffic map",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.3"
+  }
+}
