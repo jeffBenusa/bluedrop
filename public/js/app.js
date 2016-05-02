@@ -49,41 +49,6 @@ $( document ).ready(function() {
   function onMapClick(e) {
     communityClickedLatLng = [e.latlng.lat, e.latlng.lng];
     socket.emit('CommunityClicked', communityClickedLatLng)
-
-    var geojsonFeature = {
-      "type": "Feature",
-          "properties": {},
-          "geometry": {
-              "type": "Point",
-              "coordinates": [e.latlng.lat, e.latlng.lng]
-            }
-    }
-
-    //Creates custom marker image with CSS Class / JQUERY targetable
-    var cssIcon = L.divIcon({
-    // Specify a class name we can refer to in CSS.
-      className: 'css-icon',
-      html:'<div><img class="BlueZoneVisit" src="img/marker.png"/></div>',
-      // Set marker width and height
-      iconSize: [-1, -1]
-    });
-
-
-    var marker;
-
-    L.geoJson(geojsonFeature, {
-      pointToLayer: function(feature, latlng){
-        marker = L.marker(communityClickedLatLng, {
-          icon: cssIcon,
-          title: "Resource Location",
-          alt: "Resource Location",
-          riseOnHover: true,
-          draggable: false,
-          opacity:1,
-        });
-        return marker;
-      }
-    }).addTo(mymap);
   }
 
   var communityClicked= [];
@@ -99,6 +64,7 @@ $( document ).ready(function() {
 
   socket.on('displayMarker', function(markerLatLng){
     console.log(markerLatLng);
+    console.log("callback function being used");
 
     var geojsonFeature = {
       "type": "Feature",
@@ -134,6 +100,7 @@ $( document ).ready(function() {
         return marker;
       }
     }).addTo(mymap);
+
 
   });
 
