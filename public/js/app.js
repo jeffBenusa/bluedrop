@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  var socket = io.connect('localhost:3000');
+  var socket = io.connect('http://45.55.237.122/');
 
   var southWest = L.latLng(40.369454, -96.853014),
       northEast = L.latLng(43.626029, -90.151354),
@@ -21,16 +21,11 @@ $( document ).ready(function() {
 
   var myLayer = L.mapbox.featureLayer().addTo(map);
 
-  // Disable interactivity
-  map.dragging.disable();
-  map.touchZoom.disable();
-  map.doubleClickZoom.disable();
-  map.scrollWheelZoom.disable();
-  map.keyboard.disable();
+   map.doubleClickZoom.disable();
 
   // These two fadeMaker & Timer work together to fade out the markers
   var fadeMarker = function(){
-    $(".bluedrop").fadeOut(1000,function(){
+    $(".bluedrop").fadeOut(5000,function(){
       $(this).remove();
     });
   };
@@ -50,10 +45,6 @@ $( document ).ready(function() {
     className: 'bluedrop'
   });
 
-  map.on('click', function(e){
-    communityClickedLatLng = [e.latlng.lat, e.latlng.lng];
-    socket.emit('CommunityClicked', communityClickedLatLng)
-  });
 
   socket.on('displayMarker', function(markerLatLng){
     L.marker(markerLatLng, {icon: myIcon}).addTo(map);

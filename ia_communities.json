@@ -1,0 +1,120 @@
+{
+    "id": 1,
+    "name": "Algona",
+    "slug": "algona",
+    "longlat": "43.072449, -94.232226",
+    "long": 43.072449,
+    "lat": -94.232226
+}
+{
+    "id": 2,
+    "name": "Cedar Falls",
+    "slug": "cedar-falls",
+    "longlat": "42.520260, -92.445867",
+    "long": 42.52026,
+    "lat": -92.445867
+}
+{
+    "id": 3,
+    "name": "Fairfield",
+    "slug": "fairfield",
+    "longlat": "41.006401, -91.964843",
+    "long": 41.006401,
+    "lat": -91.964843
+}
+{
+    "id": 4,
+    "name": "Cedar Rapids",
+    "slug": "cedar-rapids",
+    "longlat": "41.972307, -91.671558",
+    "long": 41.972307,
+    "lat": -91.671558
+}
+{
+    "id": 5,
+    "name": "Harlan",
+    "slug": "harlan",
+    "longlat": "41.652134, -95.326083",
+    "long": 41.652134,
+    "lat": -95.326083
+}
+{
+    "id": 6,
+    "name": "Iowa City",
+    "slug": "iowa-city",
+    "longlat": "41.658481, -91.540705",
+    "long": 41.658481,
+    "lat": -91.540705
+}
+{
+    "id": 7,
+    "name": "Marion",
+    "slug": "marion",
+    "longlat": "42.040633, -91.589239",
+    "long": 42.040633,
+    "lat": -91.589239
+}
+{
+    "id": 8,
+    "name": "Mason City",
+    "slug": "mason-city",
+    "longlat": "43.151471, -93.199918",
+    "long": 43.151471,
+    "lat": -93.199918
+}
+{
+    "id": 9,
+    "name": "Muscatine",
+    "slug": "muscatine",
+    "longlat": "41.419845, -91.056537",
+    "long": 41.419845,
+    "lat": -91.056537
+}
+{
+    "id": 10,
+    "name": "Oskaloosa",
+    "slug": "oskaloosa",
+    "longlat": "41.294836, -92.644204",
+    "long": 41.294836,
+    "lat": -92.644204
+}
+{
+    "id": 11,
+    "name": "Sioux City",
+    "slug": "sioux-city",
+    "longlat": "42.486778, -96.390327",
+    "long": 42.486778,
+    "lat": -96.390327
+}
+{
+    "id": 12,
+    "name": "Spencer",
+    "slug": "spencer",
+    "longlat": "43.144862, -95.150599",
+    "long": 43.144862,
+    "lat": -95.150599
+}
+{
+    "id": 13,
+    "name": "Spirit Lake",
+    "slug": "spirit-lake",
+    "longlat": "43.416785, -95.107255",
+    "long": 43.416785,
+    "lat": -95.107255
+}
+{
+    "id": 14,
+    "name": "Waterloo",
+    "slug": "waterloo",
+    "longlat": "42.498329, -92.339569",
+    "long": 42.498329,
+    "lat": -92.339569
+}
+{
+    "id": 15,
+    "name": "Woodbine",
+    "slug": "woodbine",
+    "longlat": "41.735304, -95.705690",
+    "long": 41.735304,
+    "lat": -95.70569
+}
